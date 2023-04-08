@@ -14,7 +14,7 @@ public class HelloController {
     }
 
     @GetMapping("hello-mvc")
-    public String helloMvc(@RequestParam("name") String name, Model model){
+    public String helloMvc(@RequestParam(name = "name") String name, Model model){
         //model에 담으면 View에서 랜더링할때 쓰인다
         model.addAttribute("name", name); //key, value
         return "hello-template";
