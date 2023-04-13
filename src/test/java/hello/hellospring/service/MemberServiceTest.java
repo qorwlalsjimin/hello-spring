@@ -5,6 +5,7 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.fail;
 
 class MemberServiceTest {
@@ -36,12 +37,17 @@ class MemberServiceTest {
 
         //when
         memberService.join(member1);
-        try{
+        assertThrows(IllegalStateException.class, () -> memberService.join(member2));
+
+        //Service 클래스에서 지정하지 않은 다른 exception은 테스트 실패
+//        assertThrows(NullPointerException.class, () -> memberService.join(member2));
+
+/*        try{
             memberService.join(member2);
             fail();
         }catch (IllegalStateException e){
             assertThat(e.getMessage()).isEqualTo("이미 존재하는 회원입니다.");
-        }
+        }*/
 
         //then
 
