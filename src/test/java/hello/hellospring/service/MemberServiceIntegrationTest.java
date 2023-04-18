@@ -25,7 +25,7 @@ class MemberServiceIntegrationTest {
     //@Transactional 덕분에 afterEach 필요 없음
 
     @Test
-//    @Commit //이 테스트는 커밋
+    @Commit //이 테스트는 커밋
     void 회원가입() {
         //given
         Member member = new Member();
